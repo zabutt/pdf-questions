@@ -32,7 +32,7 @@ def main():
 
         # Display PDF content
         st.write("PDF Content:")
-        st.write(pdf_content.decode('utf-8'))
+        st.write(pdf_content)
 
         # User input for questions
         question = st.text_input("Ask a question:")
@@ -50,3 +50,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
