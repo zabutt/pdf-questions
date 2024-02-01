@@ -25,6 +25,9 @@ def generate_response(prompt, api_key):
     except requests.exceptions.RequestException as e:
         st.error(f"Error communicating with the ChatGPT API: {e}")
         return None
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
+        return None
 
 def main():
     st.title('ChatGPT PDF Question Answering')
@@ -60,9 +63,9 @@ def main():
 
         # Display the answer
         st.subheader("Answer:")
-        st.write(answer)
+        if answer is not None:
+            st.write(answer)
 
 if __name__ == "__main__":
     main()
-
 
