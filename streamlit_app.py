@@ -23,15 +23,15 @@ def main():
 
     # Upload PDF file
     pdf_file = st.file_uploader("Upload a PDF file", type=["pdf"])
-    
+
     # Extra space for visual separation
     st.markdown("---")
-    st.write(" ")
 
     # User input for questions
     question = st.text_input("Ask a question:")
 
-    if pdf_file is not None and api_key:
+    # Always display the "Get Answer" button
+    if st.button("Get Answer") and pdf_file is not None and api_key and question:
         # Cache PDF content
         pdf_content = pdf_file.read()
 
@@ -41,7 +41,6 @@ def main():
         st.write("PDF Content:")
         st.text(pdf_content)
 
-    if st.button("Get Answer") and pdf_file is not None and api_key and question:
         # Combine PDF content and question as a prompt
         prompt = f"Document: {pdf_content.decode('utf-8', 'ignore')}\nQuestion: {question}"
         
@@ -54,4 +53,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
