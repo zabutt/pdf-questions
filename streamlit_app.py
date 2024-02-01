@@ -23,6 +23,10 @@ def main():
 
     # Upload PDF file
     pdf_file = st.file_uploader("Upload a PDF file", type=["pdf"])
+    
+    # Extra space for visual separation
+    st.markdown("---")
+    st.write(" ")
 
     # User input for questions
     question = st.text_input("Ask a question:")
