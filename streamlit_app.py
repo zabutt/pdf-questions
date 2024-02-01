@@ -26,20 +26,20 @@ def main():
 
     if pdf_file is not None and api_key:
         # Cache PDF content
-        pdf_content = st.cache(pdf_file.read)()
+        pdf_content = pdf_file.read()
 
         st.subheader("Ask Questions about the PDF")
 
         # Display PDF content
         st.write("PDF Content:")
-        st.write(pdf_content.decode('utf-8'))
+        st.text(pdf_content)
 
         # User input for questions
         question = st.text_input("Ask a question:")
 
         if st.button("Get Answer"):
             # Combine PDF content and question as a prompt
-            prompt = f"Document: {pdf_content.decode('utf-8')}\nQuestion: {question}"
+            prompt = f"Document: {pdf_content.decode('utf-8', 'ignore')}\nQuestion: {question}"
             
             # Generate response using ChatGPT API
             answer = generate_response(prompt, api_key)
@@ -50,6 +50,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
 
